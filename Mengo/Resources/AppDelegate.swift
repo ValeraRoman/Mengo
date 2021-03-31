@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    // MARK: Core date stack
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "List")
+        container.loadPersistentStores { (store, error) in
+            if let error = error {
+                fatalError("\(error), \(error.localizedDescription)")
+            }
+        }
+        
+        return container
+        
+    }()
+    
 
 }
 
